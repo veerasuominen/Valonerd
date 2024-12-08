@@ -1,18 +1,15 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
-using Unity.VisualScripting;
-using UnityEngine;
 using TMPro;
-using UnityEngine.UIElements;
-using UnityEngine.UI;
+using UnityEngine;
 
-public class AgentSelecter : MonoBehaviour
+public class AbilitySelecter : MonoBehaviour
 {
     [SerializeField] private GameObject astra, omen, brimstone, harbor, clove, viper;
     [SerializeField] private GameObject dropdownmenu;
+    [SerializeField] private GameObject astraAbilityMenu;
     [SerializeField] private int selectedAgent;
+    [SerializeField] private string agentString;
     [SerializeField] private TextMeshProUGUI output;
 
     // Exposes an float array in the inspector, which you can edit there.
@@ -21,7 +18,7 @@ public class AgentSelecter : MonoBehaviour
     private void Start()
     {
         //Selects a random agent from the list
-        int agent = UnityEngine.Random.Range(0, agents.Count);
+        int agent = Random.Range(0, agents.Count);
 
         selectedAgent = agent;
 
@@ -50,7 +47,10 @@ public class AgentSelecter : MonoBehaviour
         if (val == selectedAgent)
         {
             output.text = "Correct!";
-            dropdownmenu.SetActive(false);
+            //dropdownmenu.SetActive(false);
+
+            //agentString = selectedAgent.ToString();
+            GameObject.Find(selectedAgent.ToString()).SetActive(true);
         }
     }
 }
