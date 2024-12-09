@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AbilitySelecter : MonoBehaviour
 {
     [SerializeField] private GameObject astra, brimstone, omen, harbor, clove, viper;
     [SerializeField] private GameObject dropdownmenu;
     [SerializeField] private GameObject astraAbilityMenu, brimstoneAbilityMenu, omenAbilityMenu, harborAbilityMenu, cloveAbilityMenu, viperAbilityMenu;
-    [SerializeField] private GameObject astraBlock, brimBlock;
+    [SerializeField] private GameObject astraBlock, brimBlock, omenBlock, harborBlock, cloveBlock, viperBlock;
 
     [SerializeField] private int selectedAgent;
 
@@ -20,7 +21,7 @@ public class AbilitySelecter : MonoBehaviour
     private void Start()
     {
         //Selects a random agent from the list
-        int agent = Random.Range(2, 2);
+        int agent = Random.Range(1, agents.Count);
 
         selectedAgent = agent;
 
@@ -85,7 +86,15 @@ public class AbilitySelecter : MonoBehaviour
                 }
             }
 
-            if (selectedAgent == 2) { brimstoneAbilityMenu.SetActive(true); }
+            if (selectedAgent == 3)
+            {
+                omenAbilityMenu.SetActive(true);
+
+                if (val == selectedAgent)
+                {
+                    omenBlock.SetActive(false);
+                }
+            }
 
             if (selectedAgent == 3) { omenAbilityMenu.SetActive(true); }
 
@@ -105,6 +114,17 @@ public class AbilitySelecter : MonoBehaviour
     public void Correct()
     {
         output.text = "Correct!";
+        if (selectedAgent == 1) { astraAbilityMenu.SetActive(false); }
+
+        if (selectedAgent == 2) { brimstoneAbilityMenu.SetActive(false); }
+
+        if (selectedAgent == 3) { omenAbilityMenu.SetActive(false); }
+
+        if (selectedAgent == 4) { harborAbilityMenu.SetActive(false); }
+
+        if (selectedAgent == 5) { cloveAbilityMenu.SetActive(false); }
+
+        if (selectedAgent == 6) { viperAbilityMenu.SetActive(false); }
     }
 
     private IEnumerator Wait()

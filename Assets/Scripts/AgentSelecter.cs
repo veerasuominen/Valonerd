@@ -56,12 +56,54 @@ public class AgentSelecter : MonoBehaviour
             {
                 brimstoneBlock.SetActive(false);
             }
+            if (selectedAgent == 3)
+            {
+                omenBlock.SetActive(false);
+            }
+            if (selectedAgent == 4)
+            {
+                harborBlock.SetActive(false);
+            }
+            if (selectedAgent == 5)
+            {
+                cloveBlock.SetActive(false);
+            }
+            if (selectedAgent == 6)
+            {
+                brimstoneBlock.SetActive(false);
+            }
         }
 
         if (val == selectedAgent)
         {
             output.text = "Correct!";
             dropdownmenu.SetActive(false);
+
+            if (selectedAgent == 1)
+            {
+                astraBlock.SetActive(false);
+            }
+
+            if (selectedAgent == 2)
+            {
+                brimstoneBlock.SetActive(false);
+            }
+            if (selectedAgent == 3)
+            {
+                omenBlock.SetActive(false);
+            }
+            if (selectedAgent == 4)
+            {
+                harborBlock.SetActive(false);
+            }
+            if (selectedAgent == 5)
+            {
+                cloveBlock.SetActive(false);
+            }
+            if (selectedAgent == 6)
+            {
+                brimstoneBlock.SetActive(false);
+            }
         }
     }
 }
