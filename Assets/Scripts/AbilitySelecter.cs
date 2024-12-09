@@ -58,6 +58,22 @@ public class AbilitySelecter : MonoBehaviour
             {
                 brimBlock.SetActive(false);
             }
+            if (selectedAgent == 3)
+            {
+                omenBlock.SetActive(false);
+            }
+            if (selectedAgent == 4)
+            {
+                harborBlock.SetActive(false);
+            }
+            if (selectedAgent == 5)
+            {
+                cloveBlock.SetActive(false);
+            }
+            if (selectedAgent == 2)
+            {
+                viperBlock.SetActive(false);
+            }
         }
 
         if (val == selectedAgent)
@@ -96,13 +112,35 @@ public class AbilitySelecter : MonoBehaviour
                 }
             }
 
-            if (selectedAgent == 3) { omenAbilityMenu.SetActive(true); }
+            if (selectedAgent == 4)
+            {
+                harborAbilityMenu.SetActive(true);
 
-            if (selectedAgent == 4) { harborAbilityMenu.SetActive(true); }
+                if (val == selectedAgent)
+                {
+                    harborBlock.SetActive(false);
+                }
+            }
 
-            if (selectedAgent == 5) { cloveAbilityMenu.SetActive(true); }
+            if (selectedAgent == 5)
+            {
+                cloveAbilityMenu.SetActive(true);
 
-            if (selectedAgent == 6) { viperAbilityMenu.SetActive(true); }
+                if (val == selectedAgent)
+                {
+                    cloveBlock.SetActive(false);
+                }
+            }
+
+            if (selectedAgent == 6)
+            {
+                viperAbilityMenu.SetActive(true);
+
+                if (val == selectedAgent)
+                {
+                    viperBlock.SetActive(false);
+                }
+            }
         }
     }
 
