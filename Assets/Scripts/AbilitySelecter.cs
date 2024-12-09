@@ -5,11 +5,13 @@ using UnityEngine;
 
 public class AbilitySelecter : MonoBehaviour
 {
-    [SerializeField] private GameObject astra, omen, brimstone, harbor, clove, viper;
+    [SerializeField] private GameObject astra, brimstone, omen, harbor, clove, viper;
     [SerializeField] private GameObject dropdownmenu;
-    [SerializeField] private GameObject astraAbilityMenu;
+    [SerializeField] private GameObject astraAbilityMenu, brimstoneAbilityMenu, omenAbilityMenu, harborAbilityMenu, cloveAbilityMenu, viperAbilityMenu;
+    [SerializeField] private GameObject astraBlock, brimBlock;
+
     [SerializeField] private int selectedAgent;
-    [SerializeField] private string agentString;
+
     [SerializeField] private TextMeshProUGUI output;
 
     // Exposes an float array in the inspector, which you can edit there.
@@ -18,39 +20,95 @@ public class AbilitySelecter : MonoBehaviour
     private void Start()
     {
         //Selects a random agent from the list
-        int agent = Random.Range(0, agents.Count);
+        int agent = Random.Range(2, 2);
 
         selectedAgent = agent;
 
+        //prints the selected agent in debug log
         Debug.Log(selectedAgent);
 
-        if (selectedAgent == 0) { astra.SetActive(true); }
+        //sets the right ability sprite active
+        if (selectedAgent == 1) { astra.SetActive(true); }
 
-        if (selectedAgent == 1) { brimstone.SetActive(true); }
+        if (selectedAgent == 2) { brimstone.SetActive(true); }
 
-        if (selectedAgent == 2) { omen.SetActive(true); }
+        if (selectedAgent == 3) { omen.SetActive(true); }
 
-        if (selectedAgent == 3) { harbor.SetActive(true); }
+        if (selectedAgent == 4) { harbor.SetActive(true); }
 
-        if (selectedAgent == 4) { clove.SetActive(true); }
+        if (selectedAgent == 5) { clove.SetActive(true); }
 
-        if (selectedAgent == 5) { viper.SetActive(true); }
+        if (selectedAgent == 6) { viper.SetActive(true); }
     }
 
     public void HandleInputData(int val)
     {
         if (val != selectedAgent)
         {
-            output.text = "Incorrect!";
+            output.text = "Wrong agent!";
+            Debug.Log("Wrong agent!");
+
+            if (selectedAgent == 1)
+            {
+                astraBlock.SetActive(false);
+            }
+
+            if (selectedAgent == 2)
+            {
+                brimBlock.SetActive(false);
+            }
         }
 
         if (val == selectedAgent)
         {
-            output.text = "Correct!";
-            //dropdownmenu.SetActive(false);
+            output.text = "Right agent!";
+            dropdownmenu.SetActive(false);
 
-            //agentString = selectedAgent.ToString();
-            GameObject.Find(selectedAgent.ToString()).SetActive(true);
+            //sets the right set of buttons active based on agent selected
+            if (selectedAgent == 1)
+            {
+                astraAbilityMenu.SetActive(true);
+
+                if (val == selectedAgent)
+                {
+                    astraBlock.SetActive(false);
+                }
+            }
+
+            if (selectedAgent == 2)
+            {
+                brimstoneAbilityMenu.SetActive(true);
+
+                if (val == selectedAgent)
+                {
+                    brimBlock.SetActive(false);
+                }
+            }
+
+            if (selectedAgent == 2) { brimstoneAbilityMenu.SetActive(true); }
+
+            if (selectedAgent == 3) { omenAbilityMenu.SetActive(true); }
+
+            if (selectedAgent == 4) { harborAbilityMenu.SetActive(true); }
+
+            if (selectedAgent == 5) { cloveAbilityMenu.SetActive(true); }
+
+            if (selectedAgent == 6) { viperAbilityMenu.SetActive(true); }
         }
+    }
+
+    public void Incorrect()
+    {
+        output.text = "Try again!";
+    }
+
+    public void Correct()
+    {
+        output.text = "Correct!";
+    }
+
+    private IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(0.5f);
     }
 }

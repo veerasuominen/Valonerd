@@ -10,7 +10,8 @@ using UnityEngine.UI;
 
 public class AgentSelecter : MonoBehaviour
 {
-    [SerializeField] private GameObject astra, omen, brimstone, harbor, clove, viper;
+    [SerializeField] private GameObject astra, brimstone, omen, harbor, clove, viper;
+    [SerializeField] private GameObject astraBlock, brimstoneBlock, omenBlock, harborBlock, cloveBlock, viperBlock;
     [SerializeField] private GameObject dropdownmenu;
     [SerializeField] private int selectedAgent;
     [SerializeField] private TextMeshProUGUI output;
@@ -21,23 +22,23 @@ public class AgentSelecter : MonoBehaviour
     private void Start()
     {
         //Selects a random agent from the list
-        int agent = UnityEngine.Random.Range(0, agents.Count);
+        int agent = UnityEngine.Random.Range(1, agents.Count);
 
         selectedAgent = agent;
 
         Debug.Log(selectedAgent);
 
-        if (selectedAgent == 0) { astra.SetActive(true); }
+        if (selectedAgent == 1) { astra.SetActive(true); }
 
-        if (selectedAgent == 1) { brimstone.SetActive(true); }
+        if (selectedAgent == 2) { brimstone.SetActive(true); }
 
-        if (selectedAgent == 2) { omen.SetActive(true); }
+        if (selectedAgent == 3) { omen.SetActive(true); }
 
-        if (selectedAgent == 3) { harbor.SetActive(true); }
+        if (selectedAgent == 4) { harbor.SetActive(true); }
 
-        if (selectedAgent == 4) { clove.SetActive(true); }
+        if (selectedAgent == 5) { clove.SetActive(true); }
 
-        if (selectedAgent == 5) { viper.SetActive(true); }
+        if (selectedAgent == 6) { viper.SetActive(true); }
     }
 
     public void HandleInputData(int val)
@@ -45,6 +46,16 @@ public class AgentSelecter : MonoBehaviour
         if (val != selectedAgent)
         {
             output.text = "Incorrect!";
+
+            if (selectedAgent == 1)
+            {
+                astraBlock.SetActive(false);
+            }
+
+            if (selectedAgent == 2)
+            {
+                brimstoneBlock.SetActive(false);
+            }
         }
 
         if (val == selectedAgent)
